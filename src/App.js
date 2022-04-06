@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+// import RegistrationView from './Function/RegistrationView';
+// import Form from './Function/Form_validation';
 
+// import Crud from './Function/CRUD';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CoinSummery from './Pages/CoinSummery';
+import CoinDetails from './Pages/CoinDetails';
+import Header from './Component/Header';
+import { WatchlistProvider } from './Context/WatchlistContext';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     <Router>
+       <WatchlistProvider>
+		  <Header/>
+				<Routes>
+					<Route path="/" element={<CoinSummery />} />
+					<Route path="/coinDetail" element={<CoinDetails />} />
+				</Routes>
+        </WatchlistProvider>
+			</Router>
+      {/* <Form/>
+     <Crud/>
+      <RegistrationView/> */}
     </div>
   );
 }
